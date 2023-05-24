@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bootcamp_tugas2_login/constanta/color.dart';
-import 'package:flutter_bootcamp_tugas2_login/model/AllinOnboardModel.dart';
+import 'package:newlogin/constanta/color.dart';
+import 'package:newlogin/model/AllinOnboardModel.dart';
+import 'package:newlogin/pages/login/login_page.dart';
 
 class OnboardScreenPage extends StatefulWidget {
   const OnboardScreenPage({Key? key}) : super(key:key);
@@ -33,7 +34,7 @@ class _OnboardScreenPageState extends State<OnboardScreenPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Food Express",
+          "Flutter Online Shop",
           style: TextStyle(color: primarygreen),
         ),
         backgroundColor: lightgreenshede,
@@ -74,10 +75,6 @@ class _OnboardScreenPageState extends State<OnboardScreenPage> {
                     children: [
                       ElevatedButton(
                         onPressed: () {},
-                        child: Text(
-                          "Previous",
-                          style: TextStyle(fontSize: 18, color: primarygreen),
-                        ),
                         style: ElevatedButton.styleFrom(
                           primary: lightgreenshede1,
                           shape: const RoundedRectangleBorder(
@@ -85,19 +82,23 @@ class _OnboardScreenPageState extends State<OnboardScreenPage> {
                                   topRight: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0))),
                         ),
+                        child: Text(
+                          "Previous",
+                          style: TextStyle(fontSize: 18, color: primarygreen),
+                        ),
                       ),
                       ElevatedButton(
                         onPressed: () {},
-                        child: Text(
-                          "Next",
-                          style: TextStyle(fontSize: 18, color: primarygreen),
-                        ),
                         style: ElevatedButton.styleFrom(
                           primary: lightgreenshede1,
                           shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20.0),
                                   bottomLeft: Radius.circular(20.0))),
+                        ),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(fontSize: 18, color: primarygreen),
                         ),
                       )
                     ],
@@ -108,16 +109,34 @@ class _OnboardScreenPageState extends State<OnboardScreenPage> {
                   left: MediaQuery.of(context).size.width * 0.33,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
-                      "Get Started",
-                      style: TextStyle(fontSize: 18, color: primarygreen),
-                    ),
                     style: ElevatedButton.styleFrom(
                       primary: lightgreenshede1,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                     ),
-                  ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context, MaterialPageRoute(builder: (_) => const LoginPage())
+                        );
+                      },
+                      child: Text(
+                        "Get Started",
+                        style: TextStyle(fontSize: 18, color: primarygreen),
+                      ),
+                    )
+                  )
+                  //   child: TextButton(
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //           context, MaterialPageRoute(builder: (_) => const LoginPage()));
+                  //     },
+                  //     child: const Text(
+                  //       'Login',
+                  //       style: TextStyle(color: Colors.white, fontSize: 25),
+                  //     ),
+                  //   )
+                  // ),
                 ),
         ],
       ),
@@ -127,7 +146,7 @@ class _OnboardScreenPageState extends State<OnboardScreenPage> {
   AnimatedContainer buildDot({int? index}) {
     return AnimatedContainer(
       duration: kAnimationDuration,
-      margin: EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 5),
       height: 6,
       width: currentIndex == index ? 20 : 6,
       decoration: BoxDecoration(
@@ -138,6 +157,7 @@ class _OnboardScreenPageState extends State<OnboardScreenPage> {
   }
 }
 
+// ignore: must_be_immutable
 class PageBuilderWidget extends StatelessWidget {
   String title;
   String description;
